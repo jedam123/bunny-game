@@ -1,0 +1,37 @@
+<div class="game-box stop" [class.pause]="isPaused">
+  <div class="end-view" *ngIf="isGameOver">
+    <div class="end-view__confetti"></div>
+    <div class="end-view__name">Wszystkiego najlepszego Gosia!</div>
+    <div class="end-view__name">Twój wynik to {{ score }} punktów</div>
+    <div class="btn" (click)="startGame(true)">Start</div>
+  </div>
+  <div class="start-view" *ngIf="tryAgain">
+    <div class="start-view__name">Poziom {{ level }}</div>
+    <div class="btn" (click)="startGame(false)">Dalej</div>
+    <div class="start-view__controls">
+      <div><span class="space">Space</span> - Skok</div>
+      <div><span>P</span> - Pauza</div>
+    </div>
+  </div>
+  <div class="start-view" *ngIf="isFirstLoad">
+    <div class="start-view__name">Królicze skoki</div>
+    <div class="btn" (click)="startGame(true)">Start</div>
+    <div class="start-view__controls">
+      <div><span class="space">Space</span> - Skok</div>
+      <div><span>P</span> - Pauza</div>
+    </div>
+  </div>
+  <div class="game-box__controls">
+    <div class="game-box__score">Punkty: {{ score }}</div>
+    <div class="game-box__lives">
+      Żyćka:
+      <span class="heart" [class.heart--active]="lives >= 1"></span>
+      <span class="heart" [class.heart--active]="lives >= 2"></span>
+      <span class="heart" [class.heart--active]="lives >= 3"></span>
+    </div>
+  </div>
+  <app-bunny></app-bunny>
+  <div class="carrot"></div>
+  <div class="rock rock--2"></div>
+  <div class="game-box__background"></div>
+</div>
